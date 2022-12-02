@@ -2,7 +2,7 @@
 {
     internal class Day2
     {
-        private static readonly IEnumerable<string> Lines = File.ReadLines("C:\\Users\\cory.wynn\\source\\repos\\AoC\\AoC\\Input\\Day2-input.txt");
+        private static readonly IEnumerable<string> Games = File.ReadLines("C:\\Users\\cory.wynn\\source\\repos\\AoC\\AoC\\Input\\Day2-input.txt");
 
         private static readonly Dictionary<string, int> ShapeValue = new()
         {
@@ -15,12 +15,12 @@
         {
             var totalScore = 0;
 
-            foreach (var line in Lines)
+            foreach (var game in Games)
             {
-                var player1 = line.Substring(0, 1);
-                var player2 = line.Substring(2, 1);
+                var player1 = game.Substring(0, 1);
+                var player2 = game.Substring(2, 1);
 
-                totalScore += RoundScore(player1, player2);
+                totalScore += GameScore(player1, player2);
             }
 
             return totalScore;
@@ -30,18 +30,18 @@
         {
             var totalScore = 0;
 
-            foreach (var line in Lines)
+            foreach (var game in Games)
             {
-                var player1 = line.Substring(0, 1);
-                var player2 = ShapeToChoose(player1, line.Substring(2, 1));
+                var player1 = game.Substring(0, 1);
+                var player2 = ShapeToChoose(player1, game.Substring(2, 1));
 
-                totalScore += RoundScore(player1, player2);
+                totalScore += GameScore(player1, player2);
             }
 
             return totalScore;
         }
 
-        private static int RoundScore(string player1, string player2)
+        private static int GameScore(string player1, string player2)
         {
             var roundScore = 0;
 
