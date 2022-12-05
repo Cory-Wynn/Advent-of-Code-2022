@@ -11,6 +11,9 @@ namespace AoC
 
             Console.WriteLine(Day2.PartOne());
             Console.WriteLine(Day2.PartTwo());
+
+            Console.WriteLine(Day3.PartOne());
+            Console.WriteLine(Day3.PartTwo());
         }
     }
 }
