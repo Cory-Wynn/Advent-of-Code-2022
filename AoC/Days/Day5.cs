@@ -6,16 +6,15 @@ namespace AoC.Days
     {
         private static readonly IEnumerable<string> Input = File.ReadLines("C:\\Users\\cory.wynn\\source\\repos\\AoC\\AoC\\Input\\Day5-input.txt");
 
+        private static readonly IEnumerable<Command> _commands = Input
+            .Skip(10)
+            .Select(c => new Command(int.Parse(c.Split(" ")[1]), int.Parse(c.Split(" ")[3]), int.Parse(c.Split(" ")[5])));
+
         public static string PartOne()
         {
-            var commands = Input
-                .Skip(10)
-                .Select(c => new Command(int.Parse(c.Split(" ")[1]), int.Parse(c.Split(" ")[3]), int.Parse(c.Split(" ")[5])))
-                .ToList();
-
             var stacks = CreateStacks();
 
-            foreach (var command in commands)
+            foreach (var command in _commands)
             {
                 var moves = Enumerable.Range(0, command.Move);
 
@@ -30,14 +29,9 @@ namespace AoC.Days
 
         public static string PartTwo()
         {
-            var commands = Input
-                .Skip(10)
-                .Select(c => new Command(int.Parse(c.Split(" ")[1]), int.Parse(c.Split(" ")[3]), int.Parse(c.Split(" ")[5])))
-                .ToList();
-
             var stacks = CreateStacks();
 
-            foreach (var command in commands)
+            foreach (var command in _commands)
             {
                 var crates = Enumerable.Range(0, command.Move)
                     .Select(_ => stacks[command.From - 1].Pop())
